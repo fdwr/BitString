@@ -7,25 +7,25 @@ if you need an arbitrary read of unknown data.
 
 ```c++
     // Read a bitslice 13 bits long starting at bit offset 5.
-    const uint8_t testData[] = {0x00, 0x11, 0x22, 0x33, 0x44, 0x55};
-    uint32_t value = ReadBitString(elementsLe, 5, 13, std::endian::little);
+    const uint8_t data[] = {0x00, 0x11, 0x22, 0x33, 0x44, 0x55};
+    uint32_t value = ReadBitString(data, 5, 13, std::endian::little);
     ...
 
     // Read element[1] of a 12-bit array.
-    const uint8_t bufferLe[] = {0x21, 0x43, 0x65, 0x87, 0xA9, 0xCB};
-    const uint8_t bufferBe[] = {0x32, 0x16, 0x54, 0x98, 0x7C, 0xBA};
-    uint32_t valueLe = ReadBitString(bufferLe, 1*12, 12, std::endian::little);
-    uint32_t valueBe = ReadBitString(bufferBe, 1*12, 12, std::endian::big);
+    const uint8_t dataLe[] = {0x21, 0x43, 0x65, 0x87, 0xA9, 0xCB};
+    const uint8_t dataBe[] = {0x32, 0x16, 0x54, 0x98, 0x7C, 0xBA};
+    uint32_t valueLe = ReadBitString(dataLe, 1*12, 12, std::endian::little);
+    uint32_t valueBe = ReadBitString(dataBe, 1*12, 12, std::endian::big);
     // valueLe = 0x654
     // valueBe = 0x654
     ...
 
     // Write a float32 at a misaligned bit offset 5.
-    uint8_t bufferLe[sizeof(float) + 1] = {};
-    uint8_t bufferBe[sizeof(float) + 1] = {};
+    uint8_t dataLe[sizeof(float) + 1] = {};
+    uint8_t dataBe[sizeof(float) + 1] = {};
     constexpr uint32_t piValueAsUint = std::bit_cast<uint32_t>(3.14159265358979323846f);
-    WriteBitString(bufferLe, 5, 32, std::endian::little, piValueAsUint);
-    WriteBitString(bufferBe, 5, 32, std::endian::big, piValueAsUint);
+    WriteBitString(dataLe, 5, 32, std::endian::little, piValueAsUint);
+    WriteBitString(dataBe, 5, 32, std::endian::big, piValueAsUint);
     // LE bytes: 60,FB,21,09,08
     // BE bytes: 02,02,48,7E,D8
 ```
