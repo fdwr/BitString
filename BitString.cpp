@@ -19,7 +19,7 @@
 //               as bytes: 00,00,00,40,04,00,30,02,00,14,00,C0,07,00,40,02,40,14,00,B0,06,00,34,01,C0,0F
 //
 //  Test reading/writing fields inside struct:
-//      Read NE data: a=321, b=7FFF, c=6
+//       Read NE data: a=321, b=7FFF, c=6
 //           as bytes: 21,E3,FF,6F
 //      Write NE data: a=321, b=7FFF, c=6
 //           as bytes: 21,E3,FF,6F
@@ -309,8 +309,8 @@ int main()
 {
     printf("Test array reading of generated bitmasks:\n");
     {
-        std::uint8_t elementsLe[19] = {};
-        std::uint8_t elementsBe[19] = {};
+        uint8_t elementsLe[19] = {};
+        uint8_t elementsBe[19] = {};
         constexpr size_t elementBitSize = 19;
         constexpr size_t elementCount = sizeof(elementsLe) * CHAR_BIT / elementBitSize;
 
@@ -331,8 +331,8 @@ int main()
 
     printf("Test array reading of known constant data:\n");
     {
-        const std::uint8_t elementsLe[] = {0x21, 0x43, 0x65, 0x87, 0xA9, 0xCB};
-        const std::uint8_t elementsBe[] = {0x32, 0x16, 0x54, 0x98, 0x7C, 0xBA};
+        const uint8_t elementsLe[] = {0x21, 0x43, 0x65, 0x87, 0xA9, 0xCB};
+        const uint8_t elementsBe[] = {0x32, 0x16, 0x54, 0x98, 0x7C, 0xBA};
         constexpr size_t elementBitSize = 12;
         constexpr size_t elementCount = sizeof(elementsLe) * CHAR_BIT / elementBitSize;
 
@@ -342,8 +342,8 @@ int main()
 
     printf("Test writing/reading array of increasing sequence:\n");
     {
-        std::uint8_t elementsLe[26] = {};
-        std::uint8_t elementsBe[26] = {};
+        uint8_t elementsLe[26] = {};
+        uint8_t elementsBe[26] = {};
         constexpr size_t elementBitSize = 13;
         constexpr size_t elementCount = sizeof(elementsLe) * CHAR_BIT / elementBitSize;
 
@@ -391,7 +391,7 @@ int main()
         uint32_t bValue = ReadBitString(wrapStructAsBytes(testStruct), 13,    15, std::endian::native);
         uint32_t cValue = ReadBitString(wrapStructAsBytes(testStruct), 13+15, 3,  std::endian::native);
 
-        printf("    Read NE data: a=%X, b=%X, c=%X\n", aValue, bValue, cValue);
+        printf("     Read NE data: a=%X, b=%X, c=%X\n", aValue, bValue, cValue);
         printf("         as bytes: "); PrintBytes(wrapStructAsBytes(testStruct)); printf("\n");
 
         testStruct = {};
