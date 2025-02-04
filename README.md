@@ -1,9 +1,8 @@
 # BitString
-Simple functions to read/write a bitstring from 1-32 bits at any arbitrary offset in either little endian or big endian layout.
-For most needs, you could just other tools (C/C++ bitfields, std::bitset, std::vector<bool>, _bittestandset...), but this is useful
-if you need an arbitrary read of unknown data.
+Two simple functions (ReadBitString/WriteBitString) to read/write a bitstring from 1-32 bits at any arbitrary bit offset in either little-endian or big-endian layout.
+For most needs, you could probably just other options (C/C++ bitfields, std::bitset, std::vector<bool>, _bittestandset...), but this is useful if you need an arbitrary read of unknown data.
 
-## Usage:
+## Usage
 
 ```c++
     // Read a bitslice 13 bits long starting at bit offset 5.
@@ -11,13 +10,13 @@ if you need an arbitrary read of unknown data.
     uint32_t value = ReadBitString(data, 5, 13, std::endian::little);
     ...
 
-    // Read element[1] of a 12-bit array.
+    // Read element[3] of a 12-bit array.
     const uint8_t dataLe[] = {0x21, 0x43, 0x65, 0x87, 0xA9, 0xCB};
     const uint8_t dataBe[] = {0x32, 0x16, 0x54, 0x98, 0x7C, 0xBA};
-    uint32_t valueLe = ReadBitString(dataLe, 1*12, 12, std::endian::little);
-    uint32_t valueBe = ReadBitString(dataBe, 1*12, 12, std::endian::big);
-    // valueLe = 0x654
-    // valueBe = 0x654
+    uint32_t valueLe = ReadBitString(dataLe, 3*12, 12, std::endian::little);
+    uint32_t valueBe = ReadBitString(dataBe, 3*12, 12, std::endian::big);
+    // valueLe = 0xCBA
+    // valueBe = 0xCBA
     ...
 
     // Write a float32 at a misaligned bit offset 5.
@@ -30,11 +29,11 @@ if you need an arbitrary read of unknown data.
     // BE bytes: 02,02,48,7E,D8
 ```
 
-Requires:
+## Requires
 - C++20 (for `std::endian`).
 - Tested with Visual Studio 2022, but it's a simple enough file (just copy the BitString header/cpp file) that it will probably work fine on clang/gcc too.
 
-## Building:
+## Building
 - Open BitString.sln in Visual Studio Professional/Community 2022.
 
 ## Illustrations
