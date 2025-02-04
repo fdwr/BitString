@@ -32,7 +32,7 @@ if you need an arbitrary read of unknown data.
 
 Requires:
 - C++20 (for `std::endian`).
-- Tested with Visual Studio 2022 (but it's simple enough to just copy the header file).
+- Tested with Visual Studio 2022, but it's a simple enough file (just copy the BitString header/cpp file) that it will probably work fine on clang/gcc too.
 
 ## Building:
 - Open BitString.sln in Visual Studio Professional/Community 2022.
