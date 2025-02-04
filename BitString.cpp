@@ -209,7 +209,7 @@ void PrintElementsOfGivenBitSize(
     }
 }
 
-void PrintElementsOfGivenBitSizeOld(
+void OldPrintElementsOfGivenBitSize(
     std::span<uint8_t const> data,
     size_t elementCount,
     uint32_t elementBitSize,
@@ -286,12 +286,12 @@ int main()
         }
 
         printf("LE data %zu-bit: ", elementBitSize);
-        //PrintElementsOfGivenBitSizeOld(elementsLe, elementCount, elementBitSize, std::endian::little); printf("\n");
+        //OldPrintElementsOfGivenBitSize(elementsLe, elementCount, elementBitSize, std::endian::little); printf("\n");
         PrintElementsOfGivenBitSize(elementsLe, elementCount, elementBitSize, std::endian::little); printf("\n");
         printf("      as bytes: "); PrintBytes(elementsLe); printf("\n");
 
         printf("BE data %zu-bit: ", elementBitSize);
-        //PrintElementsOfGivenBitSizeOld(elementsBe, elementCount, elementBitSize, std::endian::big); printf("\n");
+        //OldPrintElementsOfGivenBitSize(elementsBe, elementCount, elementBitSize, std::endian::big); printf("\n");
         PrintElementsOfGivenBitSize(elementsBe, elementCount, elementBitSize, std::endian::big); printf("\n");
         printf("      as bytes: "); PrintBytes(elementsBe); printf("\n");
     }
@@ -307,12 +307,12 @@ int main()
         const std::uint8_t elementsBe[byteCount + 3] = {0x32, 0x16, 0x54, 0x98, 0x7C, 0xBA};
 
         printf("LE data %zu-bit: ", elementBitSize);
-        //PrintElementsOfGivenBitSizeOld(elementsLe, elementCount, elementBitSize, std::endian::little); printf("\n");
+        //OldPrintElementsOfGivenBitSize(elementsLe, elementCount, elementBitSize, std::endian::little); printf("\n");
         PrintElementsOfGivenBitSize(elementsLe, elementCount, elementBitSize, std::endian::little); printf("\n");
         printf("      as bytes: "); PrintBytes(elementsLe); printf("\n");
 
         printf("BE data %zu-bit: ", elementBitSize);
-        //PrintElementsOfGivenBitSizeOld(elementsBe, elementCount, elementBitSize, std::endian::big); printf("\n");
+        //OldPrintElementsOfGivenBitSize(elementsBe, elementCount, elementBitSize, std::endian::big); printf("\n");
         PrintElementsOfGivenBitSize(elementsBe, elementCount, elementBitSize, std::endian::big); printf("\n");
         printf("      as bytes: "); PrintBytes(elementsBe); printf("\n");
     }
@@ -334,12 +334,12 @@ int main()
         }
 
         printf("LE data %zu-bit: ", elementBitSize);
-        //PrintElementsOfGivenBitSizeOld(elementsLe, elementCount, elementBitSize, std::endian::little); printf("\n");
+        //OldPrintElementsOfGivenBitSize(elementsLe, elementCount, elementBitSize, std::endian::little); printf("\n");
         PrintElementsOfGivenBitSize(elementsLe, elementCount, elementBitSize, std::endian::little); printf("\n");
         printf("      as bytes: "); PrintBytes(elementsLe); printf("\n");
 
         printf("BE data %zu-bit: ", elementBitSize);
-        //PrintElementsOfGivenBitSizeOld(elementsBe, elementCount, elementBitSize, std::endian::big); printf("\n");
+        //OldPrintElementsOfGivenBitSize(elementsBe, elementCount, elementBitSize, std::endian::big); printf("\n");
         PrintElementsOfGivenBitSize(elementsBe, elementCount, elementBitSize, std::endian::big); printf("\n");
         printf("      as bytes: "); PrintBytes(elementsBe); printf("\n");
     }
