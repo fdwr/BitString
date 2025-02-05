@@ -6,8 +6,11 @@ For most needs, you could probably just other options (C/C++ bitfields, std::bit
 
 ```c++
     // Read a bitslice 13 bits long starting at bit offset 5.
-    const uint8_t data[] = {0x00, 0x11, 0x22, 0x33, 0x44, 0x55};
-    uint32_t value = ReadBitString(data, 5, 13, std::endian::little);
+    const uint8_t data[] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66};
+    uint32_t valueLe = ReadBitString(data, 5, 13, std::endian::little);
+    uint32_t valueBe = ReadBitString(data, 5, 13, std::endian::big);
+    // valueLe = 1910
+    // valueBe = 488
     ...
 
     // Read element[3] of a 12-bit array.
