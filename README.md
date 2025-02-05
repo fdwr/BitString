@@ -9,8 +9,8 @@ For most needs, you could probably just other options (C/C++ bitfields, std::bit
     const uint8_t data[] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66};
     uint32_t valueLe = ReadBitString(data, 5, 13, std::endian::little);
     uint32_t valueBe = ReadBitString(data, 5, 13, std::endian::big);
-    // valueLe = 0x01910
-    // valueBe = 0x00488
+    // valueLe = 0x1910
+    // valueBe = 0x0488
     ...
 
     // Read element[3] of a 12-bit array.
