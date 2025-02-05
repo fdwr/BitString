@@ -44,25 +44,25 @@ Sequential fields are filled in increasing bitstream/byte stream order, with eac
 
 ![Fields in Little Endian](EndiannessLE.png)
 
-## Fields of various sizes in big endian order:
+### Fields of various sizes in big endian order:
 
 Sequential fields are filled in retrograde order, where later fields are allocated in increasing byte order overall, but field bit fragments fill within each byte in decreasing order. The bits-per-byte columns are visually reversed accordingly to RTL to help. Notice though that both LE and BE (once you look at it each from its respective view) are *visually* identical for the field boundaries.
 
 ![Fields in Big Endian](EndiannessBE.png)
 
-## Viewing fields in the same and opposite endianness views:
+### Viewing fields in the same and opposite endianness views:
 
 Note that viewing LE data on an LE machine and BE data on an BE machine both look clear, but BE data on an LE machine and LE data on an BE machine look very convoluted and chopped up, but interestingly, the field division points are identical in both cases.
 
 ![Fields in opposite viewpoint](EndiannessOppositeViewpoint.png)
 
-## Arbitrary slice reads of opposite endianness:
+### Arbitrary slice reads of opposite endianness:
 
 To read data of the opposite endianness from your machine's architecture, read aligned bytes, swap those bytes, and then shift and mask.
 
 ![Arbitrary slice reads](EndiannessArbitrarySliceReads.png)
 
-## Endianness conversions:
+### Endianness conversions:
 
 One way to convert endianness of a large array of bitstring elements (like 13-bit elements below) would be to use sliced reads and slice writes, using the approach above. Another way to think about it conceptually (albeit inefficiently) would be to reverse the bits within each byte and reverse the bits in each element, where each reversal partially cancels out the other reversal, while moving all the fragments around to the right locations.
 
