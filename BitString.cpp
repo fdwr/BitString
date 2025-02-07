@@ -1,8 +1,11 @@
 ﻿// Needs C++20.
 #include <stdint.h>
+#include <climits>
+#include <cstring>
 #include <bit>          // std::endian
 #include <span>         // std::span
 #include <new>          // std::launder
+#include <algorithm>
 #include <assert.h>
 
 #include "BitString.h"
@@ -15,7 +18,6 @@ uint32_t ReadBitString(
 )
 {
     using LargestDataType = uint32_t; // Needs some work for even larger types.
-    static_assert(std::endian::native == std::endian::little); // This has only been tested on an LE machine.
     const bool isBeData = (endianness == std::endian::big);
     const bool isBeHardware = (std::endian::native == std::endian::big);
     const bool endiannessMatchesHardware = (isBeData == isBeHardware);

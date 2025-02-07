@@ -31,6 +31,7 @@
 //               as bytes: 02,02,48,7E,D8
 
 // Needs C++20.
+#include <climits>
 #include <stdint.h>
 #include <stdio.h>
 #include <bit> // std::endian
@@ -142,9 +143,11 @@ int main()
     }
     printf("\n");
 
-    // Note I haven't actually tested this case on a BE machine (I don't have any :b), but it *should* work. 🤞
     printf("Test reading/writing fields inside struct:\n");
     {
+        // Note I haven't actually tested this case on a BE machine (I don't have any :b), but it *should* work. 🤞
+        static_assert(std::endian::native == std::endian::little); // This has only been tested on an LE machine.
+
         struct TestStruct
         {
             // On an LE machine, the bytes are laid out:
@@ -167,7 +170,7 @@ int main()
         TestStruct testStruct = {
             .a = 0x321,
             .b = 0x7FFF,
-            .c = 0x6
+            .c = 0x6,
         };
 
         uint32_t aValue = ReadBitString(wrapStructAsBytes(testStruct), 0,     13, std::endian::native);
