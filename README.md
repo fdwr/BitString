@@ -33,8 +33,8 @@ For most needs, you could probably just other options (C/C++ bitfields, std::bit
 ```
 
 ## Requires
-- C++20 (for `std::endian`).
-- Tested with Visual Studio 2022, but it's a simple enough file (just copy the BitString header/cpp file) that it will probably work fine on clang/gcc too.
+- C++20 (for `std::endian`). No other library dependencies.
+- Tested with {Visual Studio 2022, GCC ARM64 14.2, clang x86 19.1.0}, but it's a simple enough file (just copy the BitString header/cpp file) that it will probably work fine on other compilers too.
 
 ## Building
 - Open BitString.sln in Visual Studio Professional/Community 2022.
